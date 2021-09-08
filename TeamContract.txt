@@ -47,15 +47,15 @@ TEAM NAME [type your team name here]:
 TEAM MEMBERS AND CONTACT INFO:
 
    MEMBER              MOBILE PHONE           PREFERRED EMAIL
-1.
-2.
-3. 
+1.Hayata Suenaga	859-319-8457		hayata.suenaga@centre.edu
+2.Muhammad Mujtaba	404-610-3375		muhammad.mujtaba@centre.edu
+3. Jay Harris
 4.
 
 
 
 AGREED MEETING TIME/PLACE/LINK FOR REGULAR WEEKLY TEAM MEETINGS/WORK:
-
+6 PM every Thrusday
 
 
 
@@ -105,6 +105,7 @@ CONTRACT. WE UNDERSTAND THAT TO MODIFY THIS COVENANT, WE WILL HAVE TO
 HAVE UNANIMOUS AGREEMENT AT A MEETING WHEN ALL MEMBERS ARE PRESENT."
 
 SIGNED (Full name and date):
+Muhammad Mujtaba 09/08/2021
 
 [Type your name to indicate agreement.  Note: Each team member should
 type and commit his or her own name.  Please do not sign this agreement on behalf
