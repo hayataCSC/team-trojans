@@ -1,3 +1,11 @@
 Mission Statement:
 
-Make life easy for a lay pokemon trainer.
+Organize data on pokemons at a day care facility. Track information indicative of the day care business' performance.
+
+Mission objectives:
+Store trainers' information for easy contact.
+Keep track of critical data on pokemons.
+Log last checkin and checkout time.
+Log and retrieve pokemon's activity history and health data at the daycare.
+Understand pokemon's performance from such data as reproduction and pokemon evolution.
+Get an overview of the business performance of the daycare facility from the number of new friendships created and eggs produced.
