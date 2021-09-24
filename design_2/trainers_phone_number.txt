@@ -1,0 +1,115 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           phone_number
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Parent Table:         trainers
+Label:                phone_number
+Source Specification: _
+Shared By:            pokemons
+Aliases:              _ 
+Description:         The phone number of each trainer allowing easy access to retireve a number from a trainer.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            numeric
+Length:               
+Decimal Places:       -
+Input Mask:           -
+Display Format:       - 
+Character Support:
+  Letters (A-Z):      - 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     X 
+                   Yes:    _
+
+Default Value:     _ 
+
+Range of Values:   General
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES: 

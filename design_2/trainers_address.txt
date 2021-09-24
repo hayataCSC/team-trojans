@@ -1,0 +1,115 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           address
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Parent Table:         trainers
+Label:                address
+Source Specification: _
+Shared By:            pokemons
+Aliases:              _ 
+Description:         An address stored in the trainers table that allows us to easily see where the address of each trainer is matched with ther id and other information.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            alphanumeric
+Length:               1-50
+Decimal Places:       -
+Input Mask:           -
+Display Format:       - 
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:   
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     X 
+                   Yes:    _
+
+Default Value:     _ 
+
+Range of Values:   General
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES: 
