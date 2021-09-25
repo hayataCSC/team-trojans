@@ -1,0 +1,115 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           email
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Parent Table:         trainers
+Label:                email
+Source Specification: _
+Shared By:            pokemon
+Aliases:              _ 
+Description:         The email of each trainer allowing us to easily have contact information stored and matched with a trainer.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            alphanumeric
+Length:               1-255
+Decimal Places:       -
+Input Mask:           -
+Display Format:       - 
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _
+               Unique:     _
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     X 
+                   Yes:    _
+
+Default Value:     _ 
+
+Range of Values:   General
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES: 

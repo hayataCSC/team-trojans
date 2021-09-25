@@ -1,0 +1,115 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           specie_name
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Parent Table:         species
+Label:                specie_name
+Source Specification: _ 
+Shared By:           pokemon_species, pokemons
+Aliases:              _ 
+Description:          A name representing the specific species of a pokemon.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            alphanumeric
+Length:               1-50
+Decimal Places:       -
+Input Mask:           -
+Display Format:       - 
+Character Support:
+  Letters (A-Z):      x 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    -
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     -
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     -
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     X 
+                   Yes:    _
+
+Default Value:     _ 
+
+Range of Values:   General
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  X
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES: 
