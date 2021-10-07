@@ -1,0 +1,53 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement: Pokemon cannot have more than two species. 
+
+Constraint: Pokemon cannot have more than two species.
+
+Type:     Database Oriented:     X 
+          Application Oriented   _ 
+
+Category: Field Specific:        X 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X 
+          Delete:                _ 
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: species_id 
+
+Table Names: species
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Decimal Places:      _ 
+                   Character Support:   _ 
+                   Input Mask:          _ 
+                   Display Format:      _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Default Value:       _ 
+                   Range of Values:     _ 
+                   Comparisons Allowed: _ 
+                   Operations Allowed:  _ 
+                   Edit Rule:           Edit not arrowed 
+
+
+ACTION TAKEN
+
+_ Repeat
+
+
+NOTES: _
