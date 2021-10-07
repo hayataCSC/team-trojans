@@ -1,0 +1,55 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  No same phone numbers 
+
+Constraint: Two trainers cannot have the same phone numbers, otherwise we will be unable to reach them on their phone. We check if phone number already 
+exists in the current table of trainers, if not then number is eligible 
+
+Type:     Database Oriented:     X 
+          Application Oriented   _ 
+
+Category: Field Specific:        X 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X 
+          Delete:                _ 
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Decimal Places:      _ 
+                   Character Support:   _ 
+                   Input Mask:          _ 
+                   Display Format:      _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          X 
+                   Null Support:        _ 
+                   Values Entered By:   user 
+                   Default Value:       _ 
+                   Range of Values:     _ 
+                   Comparisons Allowed: X 
+                   Operations Allowed:  _ 
+                   Edit Rule:           enter now, edit later 
+
+
+ACTION TAKEN
+
+_ User is not allowed to enter the same phone number, if another trainer has the same phone number.
+
+
+NOTES: _
+

@@ -1,0 +1,54 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A pokemon cannot have more than two specie types 
+
+Constraint: we how many species is a pokemon associated with if it is 2 then they cannot have more 
+
+Type:     Database Oriented:     X 
+          Application Oriented   _ 
+
+Category: Field Specific:        X 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X 
+          Delete:                _ 
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Decimal Places:      _ 
+                   Character Support:   _ 
+                   Input Mask:          _ 
+                   Display Format:      _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   user 
+                   Default Value:       _ 
+                   Range of Values:     2 
+                   Comparisons Allowed: _ 
+                   Operations Allowed:  _ 
+                   Edit Rule:           enter now, no edits allowed 
+
+
+ACTION TAKEN
+
+_ We make sure that a pokemon is no more than two specie type. As a pokemon can be grass and poison but not water, poison and grass.
+
+
+NOTES: _
+
