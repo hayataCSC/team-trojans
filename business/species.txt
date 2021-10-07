@@ -2,9 +2,9 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement: Pokemon cannot have more than two species. 
+Statement: Pokemon cannot have more than one species. 
 
-Constraint: Pokemon cannot have more than two species.
+Constraint: Pokemon cannot have more than one species.
 
 Type:     Database Oriented:     X 
           Application Oriented   _ 
