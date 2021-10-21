@@ -50,4 +50,6 @@ ACTION TAKEN
 _ Repeat
 
 
-NOTES: _
+NOTES: We will look at mother_id and father_id and then check the pokemon details by accessing their information
+in the pokemon tables. Mother_id has to be a female meaning that the is_female boolean has to be true and the pokemon
+related to father_id must have  a is_female as false
