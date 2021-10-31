@@ -9,6 +9,8 @@ CREATE TABLE species (
   type VARCHAR(50),
   FOREIGN KEY (type)
     REFERENCES type(name)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
 );
 
 DROP TABLE IF EXISTS pokemon;
@@ -20,7 +22,10 @@ CREATE TABLE pokemon (
   pokemon_level INT,
   is_female Boolean,
   FOREIGN KEY (species)
-    REFERENCES species(name),
+    REFERENCES species(name)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
   FOREIGN KEY (trainer_id)
     REFERENCES trainer(id)
+    ON DELETE RESTRICT
 );
