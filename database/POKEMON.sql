@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS type;
 CREATE TABLE type (
-  name VARCHAR(50) PRIMARY KEY
+  PRIMARY KEY (name),
+  name VARCHAR(50)
 );
 
 DROP TABLE IF EXISTS species;
 CREATE TABLE species (
-  name VARCHAR(50) PRIMARY KEY,
+  PRIMARY KEY (name),
+  name VARCHAR(50),
   type VARCHAR(50),
   FOREIGN KEY (type)
     REFERENCES type(name)
@@ -15,7 +17,8 @@ CREATE TABLE species (
 
 DROP TABLE IF EXISTS pokemon;
 CREATE TABLE pokemon (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  PRIMARY KEY (id),
+  id INT AUTO_INCREMENT,
   name VARCHAR(50),
   species VARCHAR(50),
   trainer_id INT,
