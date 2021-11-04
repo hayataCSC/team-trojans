@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS move;
+CREATE TABLE move (
+  PRIMARY KEY (name),
+  name VARCHAR(50)
+);

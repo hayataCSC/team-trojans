@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS trainer;
+CREATE TABLE trainer (
+  PRIMARY KEY (id),
+  id INT AUTO_INCREMENT,
+  phone VARCHAR(50),
+  email VARCHAR(50)
+);
