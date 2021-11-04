@@ -1,0 +1,8 @@
+trainer.php/:trainer_id (Jay)
+Data of interest to a specific trainer
+list of pokemons (max 2)
+	select statement to select pokemon related to a unique trainer id
+each pokemon serves as a link to pokemon.php
+	select statement to select pokemon from trainers table then GET function to serve as link
+total number of eggs produced between the trainer’s pokemons
+	select statement to select eggs from a trainer's pokemons then aggregate function to find total
