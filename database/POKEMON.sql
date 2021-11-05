@@ -1,20 +1,3 @@
-DROP TABLE IF EXISTS type;
-CREATE TABLE type (
-  PRIMARY KEY (name),
-  name VARCHAR(50)
-);
-
-DROP TABLE IF EXISTS species;
-CREATE TABLE species (
-  PRIMARY KEY (name),
-  name VARCHAR(50),
-  type VARCHAR(50),
-  FOREIGN KEY (type)
-    REFERENCES type(name)
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT
-);
-
 DROP TABLE IF EXISTS pokemon;
 CREATE TABLE pokemon (
   PRIMARY KEY (id),
