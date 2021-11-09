@@ -10,9 +10,6 @@
       echo "Error Number: " . $conn->connect_errno . "<br>";
       echo "Details: " . $conn->connect_error . "<br>";
       exit; // Exit from the program
-    } else {
-      /* If successfully connected, log the message to the console */
-      echo "<script>console.log('Connected to the database...')</script>";
     }
 
     return $conn;
