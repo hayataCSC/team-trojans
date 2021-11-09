@@ -12,7 +12,8 @@
   FROM trainer t
   LEFT JOIN pokemon p
     ON p.trainer_id = t.id
-  GROUP BY t.id;';
+  GROUP BY t.id
+  ORDER BY t.name DESC;';
   $result = $conn->query($query);
   if (!$result) die(mysqli_error($conn));
   /* Get each row as an associative array */
