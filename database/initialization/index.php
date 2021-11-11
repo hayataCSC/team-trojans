@@ -1,9 +1,14 @@
 <?php
-  $conn = new mysqli('localhost', 'hayata_suenaga', 'password');
+  $config = parse_ini_file(__DIR__ . '/../../mysql.ini');
+  $dbname = 'pokemon';
+
+  $conn = new mysqli(
+    $config['mysqli.default_host'],
+    $config['mysqli.default_user'],
+    $config['mysqli.default_pw'],
+    $dbname);
   /* Connect to the database */
   if ($conn->connect_errno) die($conn->connect_error . "\n");
-  /* Select database */
-  if (!$conn->query('USE pokemon')) die($conn->error . "\n");
   
   /* Import GenerateTrainer class from Trainer.php */
   require(__DIR__ . '/Trainer.php');
@@ -33,15 +38,22 @@
   $species = getSpecies();
   /* Insert each species to the species table */
   foreach ($species as $item) {
-    insertSpecies($conn, $item['Name'], $item['Type 1']);
+    insertSpecies($conn, $item['Name']);
+    insertSpeciesType($conn, $item['Name'], $item['Type 1']);
     /* If there is a second type for the species, add another entry */
     if ($item['Type 2'] !== "") {
-      insertSpecies($conn, $item['Name'], $item['Type 2']);
+      insertSpeciesType($conn, $item['Name'], $item['Type 2']);
     }
   }
-  /* Helper func for constructing the query to insert species */
-  function insertSpecies($conn, $name, $type) {
-    $query = "INSERT INTO species(name, type)
+  /* Helper func for inserting species and type combinatioin into species_type table */
+  function insertSpecies($conn, $name) {
+    $query = "INSERT INTO species(name)
+      VALUES (\"{$name}\");";
+    if (!$conn->query($query)) die($conn->error . "\n");
+  }
+  /* Helper func for inserting species into the species table */
+  function insertSpeciesType($conn, $name, $type) {
+    $query = "INSERT INTO species_type(name, type)
       VALUES (\"{$name}\", \"{$type}\");";
     if (!$conn->query($query)) die($conn->error . "\n");
   }
