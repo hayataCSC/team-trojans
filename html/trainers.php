@@ -13,7 +13,7 @@
   LEFT JOIN pokemon p
     ON p.trainer_id = t.id
   GROUP BY t.id
-  ORDER BY t.name DESC;';
+  ORDER BY t.name ASC;';
   $result = $conn->query($query);
   if (!$result) die(mysqli_error($conn));
   /* Get each row as an associative array */
@@ -75,7 +75,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="trainer-form" action="/api/trainers.php" method="POST">
+        <form id="trainer-form" action="/poke_care/api/trainers.php" method="POST">
           <input type="hidden" name="query" value="POST">
           <div class="form-group">
             <label for="name">Full name</label>

@@ -7,13 +7,13 @@
 </head>
 <body>
   <header class="d-flex flex-wrap justify-content-center px-5 py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <a href="/poke_care/pokemons.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
       <span class="fs-4">Poke Daycare</span>
     </a>
 
     <ul class="nav nav-pills">
-      <li class="nav-item"><a href="../pokemons.php" class="nav-link">Pokemons</a></li>
-      <li class="nav-item"><a href="../trainers.php" class="nav-link">Trainers</a></li>
+      <li class="nav-item"><a href="/poke_care/pokemons.php" class="nav-link">Pokemons</a></li>
+      <li class="nav-item"><a href="/poke_care/trainers.php" class="nav-link">Trainers</a></li>
     </ul>
   </header>
   <div class="container">
