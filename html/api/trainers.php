@@ -14,18 +14,19 @@
       $query = "INSERT INTO trainer(name, phone, email)
         VALUES(?, ?, ?);";
       $stmt = $conn->prepare($query);
+      if (!$stmt) die($conn->error . "\n");
       $stmt->bind_param('sss', $_POST['name'], $_POST['phone'], $_POST['email']);
       break;
     case 'PUT':
-      $query = "UPDATE trainer
-      SET name = ?, phone = ?, email = ?,
-      WHERE id = ?;";
+      $query = "UPDATE trainer SET name = ?, phone = ?, email = ? WHERE id = ?;";
       $stmt = $conn->prepare($query);
+      if (!$stmt) die($conn->error . "\n");
       $stmt->bind_param('sssi', $_POST['name'], $_POST['phone'], $_POST['email'], $_POST['id']);
       break;
     case 'DELETE':
       $query = "DELETE FROM trainer WHERE id = ?;";
       $stmt = $conn->prepare($query);
+      if (!$stmt) die($conn->error . "\n");
       $stmt->bind_param('i', $_POST['id']);
       break;
     default:
@@ -34,9 +35,20 @@
 
   /* Execute the query */
   if(!$stmt->execute()) die($conn->error . "\n");
-  
-  /* Redirect the user */
-  header('Location: ../trainers.php');
-  exit();
+
+  /* Rediret the user based on the request method */
+  switch($_POST['query']) {
+    case 'POST':
+      $id = $conn->insert_id;
+      header('Location: ../trainer.php/?id=' . $id);
+      exit();
+    case 'PUT':
+      $id = $_POST['id'];
+      header('Location: ../trainer.php/?id=' . $id);
+      exit();
+    case 'DELETE':
+      header('Location: ../trainers.php');
+      exit();
+  }
 
 ?>
