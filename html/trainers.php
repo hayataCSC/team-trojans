@@ -51,7 +51,7 @@
         <td><?php echo $trainer['phone'] ?></td>
         <td><?php echo $trainer['email'] ?></td>
         <td>
-          <form action="/api/trainers.php" method="POST">
+          <form action="/poke_care/api/trainers.php" method="POST">
             <input type="hidden" name="id" value=<?php echo $trainer['id'] ?>>
             <input class="<?php echo (int)$trainer['pokemon_num'] === 0 ? 'btn btn-outline-danger' : 'btn btn-outline-secondary'; ?>"
             type="submit"
