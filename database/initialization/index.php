@@ -1,12 +1,7 @@
 <?php
-  $config = parse_ini_file(__DIR__ . '/../../mysql.ini');
-  $dbname = 'pokemon';
 
-  $conn = new mysqli(
-    $config['mysqli.default_host'],
-    $config['mysqli.default_user'],
-    $config['mysqli.default_pw'],
-    $dbname);
+  $dbname = 'pokemon';
+  $conn = new mysqli('localhost', 'hayata_suenaga', 'password', $dbname);
   /* Connect to the database */
   if ($conn->connect_errno) die($conn->connect_error . "\n");
   
