@@ -46,13 +46,13 @@
 <p>Phone Number: <?php echo $trainer['phone'] ?></p>
 <p>Email Address: <?php echo $trainer['email'] ?></p>
 <div style="margin-top:3rem;">
+  <h3>Pokemons Under Care: </h3>
+  <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target='#pokemonModal' <?php count($pokemons) >= 2 ? 'disabled' : null ?>>Add pokemon</button>
   <?php if(count($pokemons) === 0): ?>
     <div class="alert alert-info" role="alert">
       <?php echo $trainer['name'] . ' does not have any pokemons'; ?>
     </div>
   <?php else: ?>
-  <h3>Pokemons Under Care: </h3>
-  <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target='#pokemonModal' <?php count($pokemons) >= 2 ? 'disabled' : null ?>>Add pokemon</button>
   <table class="table">
     <thead>
       <tr>
