@@ -1,7 +1,10 @@
 <?php
 
-  $dbname = 'pokemon';
-  $conn = new mysqli('localhost', 'hayata_suenaga', 'password', $dbname);
+$host = "localhost";
+$user = "sheik";
+$pass = "csc362";
+$dbname = "pokemon";
+  $conn = new mysqli($host, $user, $pass, $dbname);
   /* Connect to the database */
   if ($conn->connect_errno) die($conn->connect_error . "\n");
   
