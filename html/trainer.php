@@ -122,7 +122,7 @@
       <div class="modal-body">
         <form id="trainer-form" action="/poke_care/trainer.php" method="POST">
           <input type="hidden" name="query" value="POST">
-          <input type="hidden" name"trainer_id" value="<? $trainer['id'] ?>">
+          <input type="hidden" name="trainer_id" value="<? $trainer['id'] ?>">
           <div class="form-group">
             <label for="name">Nick name</label>
             <input id="name" name="name" class="form-control" type="text" placeholder="Nick name" required>
