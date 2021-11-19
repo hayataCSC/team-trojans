@@ -99,7 +99,7 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input id="emial" name="email" class="form-control" type="email" value="<?php  echo $trainer['email']; ?>" required>
+            <input id="email" name="email" class="form-control" type="email" value="<?php  echo $trainer['email']; ?>" required>
           </div>
         </form>
       </div>
