@@ -37,7 +37,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/poke_care/api/moves.php" method="POST">
+        <form id="addMoveForm" action="/poke_care/api/moves.php" method="POST">
           <!-- Include pokemon id in the request -->
           <input type="hidden" name="pokemon_id" value="2">
           <input type="hidden" name="query" value="POST">
@@ -53,7 +53,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <input type="submit" form="trainer-form" class="btn btn-primary" />
+        <input type="submit" form="addMoveForm" class="btn btn-primary" />
       </div>
     </div>
   </div>
