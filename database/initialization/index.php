@@ -9,7 +9,7 @@
     $config['mysqli.default_pw'],
     $dbname);
 
-    /* Connect to the database */
+  /* Connect to the database */
   if ($conn->connect_errno) die($conn->connect_error . "\n");
   
   /* Import GenerateTrainer class from Trainer.php */
