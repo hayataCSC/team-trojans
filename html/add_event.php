@@ -17,8 +17,16 @@
 <!-- Import the header --->
 <?php require(__DIR__ . '/inc/header.php'); ?>
 
+<!-- For logging Level Up event --->
+<form action="/poke_care/api/pokemon.php" method="POST">
+  <input type="hidden" name="operation" value="move_up" />
+  <button type="submit" class="btn btn-primary">Level Up</button>
+</form>
+
+<!-- For Showing a form for Move event --->
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMoveModal">Add Move Learned</button>
 
+<!-- Modal form for logging Move event --->
 <div class="modal fade" id="addMoveModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -30,6 +38,7 @@
       </div>
       <div class="modal-body">
         <form action="/poke_care/api/moves.php" method="POST">
+          <!-- Include pokemon id in the request -->
           <input type="hidden" name="pokemon_id" value="2">
           <input type="hidden" name="query" value="POST">
           <div class="form-group">
