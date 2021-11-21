@@ -1,11 +1,15 @@
 <?php
 
-$host = "localhost";
-$user = "sheik";
-$pass = "csc362";
-$dbname = "pokemon";
-  $conn = new mysqli($host, $user, $pass, $dbname);
-  /* Connect to the database */
+  $config = parse_ini_file(__DIR__ . '/../../mysql.ini');
+
+  $dbname = 'pokemon';
+  $conn = new mysqli(
+    $config['mysqli.default_host'],
+    $config['mysqli.default_user'],
+    $config['mysqli.default_pw'],
+    $dbname);
+
+    /* Connect to the database */
   if ($conn->connect_errno) die($conn->connect_error . "\n");
   
   /* Import GenerateTrainer class from Trainer.php */
@@ -74,4 +78,11 @@ $dbname = "pokemon";
     if (!$conn->query($query)) die($conn->error . "\n");
   }
   
+  /* Import getMoves from Move.php */
+  require(__DIR__ . '/Move.php');
+  $moves = getMoves();
+  foreach ($moves as $move) {
+    $query = "INSERT INTO move(name) VALUES (\"{$move['Name']}\")";
+    if (!$conn->query($query)) die($conn->error);
+  }
 ?>
