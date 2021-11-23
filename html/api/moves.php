@@ -13,6 +13,12 @@
   /* Connect to the database */
   $conn = connect();
 
+  $query = "INSERT INTO event (pokemon_id, happend_at)
+  VALUES (?, ?)";
+
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param($pokemonId, )
+
   /* Prepare the query */
   /* This query needs to insert the data to the event table as well as to the move_learned table.
    * In order to insert a data into the move_learned table, you need the id created when inserting
