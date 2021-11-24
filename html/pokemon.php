@@ -38,10 +38,10 @@
 <h1><?php echo $pokemon['name'] ?></h1>
 <h3><?php echo "Species: {$pokemon['species']}"; ?></h3>
 <h3><?php echo "Current level: {$pokemon['level']}"; ?></h3>
-<h3><?php echo 'Sex' . $pokemon['is_female'] ? 'Female' : 'Male'; ?></h3>
+<h3><?php echo $pokemon['is_female'] ? 'Female' : 'Male'; ?></h3>
 
 <form action="/poke_care/api/moves.php" method="POST">
-  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['pokemon_id']; ?>">
+  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
   <div class="form-group">
     <label for="moves">Move Learned</label>
     <input list="movesList" id="move" name="move" class="form-control"/>
@@ -51,7 +51,7 @@
       <?php endforeach; ?>
     </datalist>
   </div>
-  <button type="submit" name="query" value="PUT">Log new move</button>
+  <button type="submit" class="btn btn-primary" name="query" value="PUT">Log new move</button>
 </form>
 
 <!-- Import the footer --->
