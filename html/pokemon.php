@@ -54,5 +54,9 @@
   <button type="submit" class="btn btn-primary" name="query" value="PUT">Log new move</button>
 </form>
 
+<form action="/poke_care/api/pokemon.php" method="POST">
+  <button type="submit" class="btn btn-primary" name="query" value="level_up">Increment pokemon's level</button>
+</form>
+
 <!-- Import the footer --->
 <?php require(__DIR__ . '/inc/footer.php'); ?>
