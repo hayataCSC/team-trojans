@@ -11,6 +11,17 @@ BEGIN
   SELECT level INTO current_level
     FROM pokemon
     WHERE id = pokemon_id;
+  /* Check if the same pokemon and level combination exists in the move_learned table */
+  DECLARE count INT;
+  SELECT COUNT(*) INTO count
+    FROM event e
+    INNER JOIN move_learned m
+      ON e.id = m.event_id
+    WHERE e.pokemon_id = pokemon_id AND m.level = current_level;
+  IF (count > 0) THEN
+    SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Pokemon can only learn a new move after leveling up';
+  END IF;
   /* Start a transaction */
   START TRANSACTION;
   /* Insert the pokemon's id and current datetime */
