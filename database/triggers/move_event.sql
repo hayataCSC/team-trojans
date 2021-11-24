@@ -7,12 +7,14 @@ CREATE PROCEDURE log_move_event(
 BEGIN
   /* Create a local variable for storing the current level of the pokemon */
   DECLARE current_level INT;
+  /* Create a local variable for counting the number of move event records
+   * with specific attributes */
+  DECLARE count INT;
   /* Get the current level of the pokemon */
   SELECT level INTO current_level
     FROM pokemon
     WHERE id = pokemon_id;
   /* Check if the same pokemon and level combination exists in the move_learned table */
-  DECLARE count INT;
   SELECT COUNT(*) INTO count
     FROM event e
     INNER JOIN move_learned m
