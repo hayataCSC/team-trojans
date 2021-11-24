@@ -14,7 +14,7 @@ BEGIN
   /* Start a transaction */
   START TRANSACTION;
   /* Insert the pokemon's id and current datetime */
-  INSERT INTO event (pokemon_id, happend_at)
+  INSERT INTO event (pokemon_id, happened_at)
     VALUES(pokemon_id, NOW());
   /* Insert the event id generated, the move's name, and the pokemon's
    * current level into the move_learned table */
