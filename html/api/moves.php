@@ -13,15 +13,15 @@
   /* Connect to the database */
   $conn = connect();
 
-  $query = "CALL log_move_event(pokemon_id, move_name)
-  VALUES (?, ?)";
-
+  /* Call the log_move_event stored procedure with two arguments */
+  $query = "CALL log_move_event(?, ?)";
   $stmt = $conn->prepare($query);
   if (!$stmt) die($conn->error . "\n");
-  $stmt->bind_param($pokemonId, $moveName);
+  $stmt->bind_param('ss', $pokemonId, $moveName);
   if (!$stmt->execute()) die($conn->error . "\n");
 
-  header('Location: ../pokemon.php');
+  /* Redirect the user */
+  header("Location: ../pokemon.php?id=$pokemonId");
   exit();
 
   /* Prepare the query */
