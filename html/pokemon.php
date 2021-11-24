@@ -55,7 +55,8 @@
 </form>
 
 <form action="/poke_care/api/pokemon.php" method="POST">
-  <button type="submit" class="btn btn-primary" name="query" value="level_up">Increment pokemon's level</button>
+  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
+  <button type="submit" class="btn btn-primary" name="operation" value="level_up">Increment pokemon's level</button>
 </form>
 
 <!-- Import the footer --->
