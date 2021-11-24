@@ -13,11 +13,16 @@
   /* Connect to the database */
   $conn = connect();
 
-  $query = "INSERT INTO event (pokemon_id, happend_at)
+  $query = "CALL log_move_event(pokemon_id, move_name)
   VALUES (?, ?)";
 
   $stmt = $conn->prepare($query);
-  $stmt->bind_param($pokemonId, )
+  if (!$stmt) die($conn->error . "\n");
+  $stmt->bind_param($pokemonId, $moveName);
+  if (!$stmt->execute()) die($conn->error . "\n");
+
+  header('Location: ../pokemon.php');
+  exit();
 
   /* Prepare the query */
   /* This query needs to insert the data to the event table as well as to the move_learned table.
@@ -28,4 +33,5 @@
    * In order to insert a record to the move_learned table, I nedd the the latest level_up_event for
    * the pokemon that just learned the new move. If there is already a move event that references
    * the same level_up_event_id, the primary key constrain (or unique key constraint) to the
-   * level_up_event_id field should prevent the insertion.
+   * level_up_event_id field should prevent the insertion. */
+?>
