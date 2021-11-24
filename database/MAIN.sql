@@ -14,3 +14,4 @@ SOURCE EGG.sql;
 SOURCE LEVEL_UP.sql;
 SOURCE MOVE.sql;
 SOURCE MOVE_LEARNED.sql;
+SOURCE triggers/move_event.sql;
