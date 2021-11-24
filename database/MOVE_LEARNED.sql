@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS move_learned;
 CREATE TABLE move_learned (
-  PRIMARY KEY (event_id, level),
+  PRIMARY KEY (event_id),
   event_id INT,
   move_name VARCHAR(50),
-  level INT,
+  level INT UNIQUE,
   FOREIGN KEY (event_id)
     REFERENCES event(id)
     ON DELETE RESTRICT,
