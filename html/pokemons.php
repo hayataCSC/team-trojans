@@ -6,7 +6,7 @@
   /* Connect to the pokemon database */
   $conn = connect('pokemon');
   /* Write the qeury string */
-  $query = "SELECT p.name as nickname, p.species, p.level, p.is_female, t.name as trainer, t.id as trainer_id
+  $query = "SELECT p.id AS id, p.name AS nickname, p.species, p.level, p.is_female, t.name as trainer, t.id as trainer_id
     FROM pokemon p
     LEFT JOIN trainer t
     ON p.trainer_id = t.id;";
@@ -35,7 +35,11 @@
   <tbody>
     <?php foreach($pokemons as $pokemon) : ?>
       <tr>
-        <th scope="row"><?php echo $pokemon['nickname']; ?></th>
+        <th scope="row">
+          <a href=<?php echo "pokemon.php/?id={$pokemon['id']}"; ?>>
+            <?php echo $pokemon['nickname']; ?>
+          </a>
+        </th>
         <td><?php echo $pokemon['species']; ?></td>
         <td><?php echo $pokemon['level']; ?></td>
         <td><?php echo $pokemon['is_female'] ? 'M' : 'F'; ?></td>
