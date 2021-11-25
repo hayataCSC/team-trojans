@@ -14,6 +14,7 @@
   /* Get the requested pokemon */
   $query = 'SELECT name, species, level, is_female FROM pokemon WHERE id = ?;';
   $stmt = $conn->prepare($query);
+  if (!$stmt) die($conn->error);
   $stmt->bind_param('s', $_GET['id']);
   if (!$stmt->execute()) die();
   $result = $stmt->get_result();
@@ -32,9 +33,23 @@
   $stmt->bind_param('i', $_GET['id']);
   if (!$stmt->execute()) die();
   $result = $stmt->get_result();
-  $friendIds = $result->fetch_all(MYSQLI_NUM);
+  $friends = $result->fetch_all(MYSQLI_NUM);
+  /* Free result set after calling stored procedure
+   * (See https://stackoverflow.com/questions/14554517/php-commands-out-of-sync-error) */
+  $result->close();
+  $conn->next_result();
   /* Convert 2d array to 1d array */
-  $frinedIds = array_map(function($friend) { return $friend[0]; }, $friendIds);
+  $friendIds = array_map(function($friend) { return $friend[0]; }, $friends);
+
+  /* Get potential friends from the pokemons (filter out pokemons who are already friends)
+   * By using "use", the callback has access to the friendIds array that exists in the outerscope */
+  $potentialFriends =
+    array_filter(
+      $pokemons,
+      function($pokemon) use ($friendIds) {
+        return !in_array($pokemon['id'], $friendIds) && $pokemon['id'] !== $_GET['id'];
+      }
+    );
 
   /* Get all pokemon moves */
   $query = 'SELECT * FROM move';
@@ -78,16 +93,16 @@
 
 <form action="/poke_care/api/pokemon.php" method="POST">
   <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-  <button type="submit" class="btn btn-primary" name="operation" value="befriend">Add Friend</button>
   <div class="form-group">
     <label for="pokemons">Befriend with</label>
-    <input list="pokemonList" id="pokemons" name="friend" class="form-control"/>
+    <input list="pokemonList" id="pokemons" name="new_friend_id" class="form-control"/>
     <datalist id="pokemonList">
-      <?php foreach($pokemonNames as $pokemon): ?>
-        <option value="<?php echo $pokemon; ?>">
+      <?php foreach($potentialFriends as $potentialFriend): ?>
+        <option value="<?php echo $potentialFriend['id']; ?>"><?php echo $potentialFriend['name']; ?></option>
       <?php endforeach; ?>
     </datalist>
   </div>
+  <button type="submit" class="btn btn-primary" name="operation" value="befriend">Add Friend</button>
 </form>
 
 <!-- Import the footer --->
