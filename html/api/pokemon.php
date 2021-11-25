@@ -24,6 +24,18 @@
       if (!$stmt->execute()) die($conn->error);
       /* Redirect the user */
       header("Location: ../pokemon.php/?id=$pokemonId");
+
+    case 'befriend':
+      /* Get the id of the new friend pokemon */
+      $friendId = $_POST['new_friend_id'];
+      /* Call the stored procedure for adding a friend */
+      $query = 'CALL befriend(?, ?)';
+      $stmt = $conn->prepare($query);
+      if (!$stmt) die($conn->error);
+      $stmt->bind_param('ii', $pokemonId, $friendId);
+      if (!$stmt->execute()) die($conn->error);
+      /* Redirect the user */
+      header("Location: ../pokemon.php/?id=$pokemonId");
   }
 
 ?>
