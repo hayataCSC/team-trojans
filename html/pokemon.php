@@ -40,6 +40,13 @@
   $conn->next_result();
   /* Convert 2d array to 1d array */
   $friendIds = array_map(function($friend) { return $friend[0]; }, $friends);
+  /* Filter friends from the pokemons */
+  $friends = array_filter(
+    $pokemons,
+    function($pokemon) use ($friendIds) {
+      return in_array($pokemon['id'], $friendIds) && $pokemon['id'] !== $_GET['id'];
+    }
+  );
 
   /* Get potential friends from the pokemons (filter out pokemons who are already friends)
    * By using "use", the callback has access to the friendIds array that exists in the outerscope */
@@ -71,6 +78,13 @@
 <h3><?php echo "Species: {$pokemon['species']}"; ?></h3>
 <h3><?php echo "Current level: {$pokemon['level']}"; ?></h3>
 <h3><?php echo $pokemon['is_female'] ? 'Female' : 'Male'; ?></h3>
+
+<h3><?php echo "{$pokemon['name']}'s friends"; ?></h3>
+<ul class="list-group">
+  <?php foreach($friends as $friend): ?>
+    <li class="list-group-item"><?php echo $friend['name'] ?></li>
+  <?php endforeach; ?>
+</ul>
 
 <form action="/poke_care/api/moves.php" method="POST">
   <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
