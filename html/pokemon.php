@@ -74,9 +74,11 @@
   $partnerName;
   if (!isset($partnerId)) $partnerName = null;
   else {
-    foreach($pokemons as $pokemon) {
-      if ((int)$pokemon['id'] === $partnerId) {
-        $partnerName = $pokemon['name'];
+    /* Don't use "pokemon" as a variable name here (instead use $p).
+     * It still collide with $pokemon that refers to the requested pokemon */
+    foreach($pokemons as $p) {
+      if ((int)$p['id'] === $partnerId) {
+        $partnerName = $p['name'];
         break;
       }
     }
