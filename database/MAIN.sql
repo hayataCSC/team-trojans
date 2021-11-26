@@ -18,3 +18,5 @@ SOURCE procedures/move_event.sql;
 SOURCE procedures/level_up.sql;
 SOURCE procedures/befriend.sql;
 SOURCE procedures/get_friends.sql;
+SOURCE functions/get_partner.sql;
+SOURCE procedures/have_egg.sql;
