@@ -58,6 +58,30 @@
       }
     );
 
+  /* Get the id of the partner */
+  $query = "SELECT get_partner(?)";
+  $stmt = $conn->prepare($query);
+  if (!$stmt) die($conn->error);
+  $stmt->bind_param('i', $_GET['id']);
+  if (!$stmt->execute()) die();
+  $result = $stmt->get_result();
+  $partnerId = $result->fetch_all()[0][0];
+  /* Free result set after calling stored function
+   * (See https://stackoverflow.com/questions/14554517/php-commands-out-of-sync-error) */
+  $result->close();
+
+  /* Get the name of the partner */
+  $partnerName;
+  if (!isset($partnerId)) $partnerName = null;
+  else {
+    foreach($pokemons as $pokemon) {
+      if ((int)$pokemon['id'] === $partnerId) {
+        $partnerName = $pokemon['name'];
+        break;
+      }
+    }
+  }
+  
   /* Get all pokemon moves */
   $query = 'SELECT * FROM move';
   $result = $conn->query($query);
@@ -117,6 +141,13 @@
     </datalist>
   </div>
   <button type="submit" class="btn btn-primary" name="operation" value="befriend">Add Friend</button>
+</form>
+
+<form action="/poke_care/api/eggs.php" method="POST">
+  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
+  <button type="submit" class="btn btn-primary" name="operation" value="have_egg">
+    <?php echo "Have an egg with $partnerName"; ?>
+  </button>
 </form>
 
 <!-- Import the footer --->
