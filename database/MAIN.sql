@@ -20,6 +20,7 @@ SOURCE procedures/befriend.sql;
 SOURCE procedures/get_friends.sql;
 SOURCE functions/get_partner.sql;
 SOURCE procedures/have_egg.sql;
+SOURCE procedures/get_all_events.sql;
 
 create function total_moves()
 Returns int
