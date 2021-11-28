@@ -92,6 +92,15 @@
   /* Get only move names */
   $moves = array_map(function($move) { return $move[0]; }, $moves);
 
+  /* Get all events for the pokemon */
+  $query = 'CALL get_all_events(?)';
+  $stmt = $conn->prepare($query);
+  if (!$stmt) die($conn->error);
+  $stmt->bind_param('i', $_GET['id']);
+  if (!$stmt->execute()) die($conn->error);
+  $result = $stmt->get_result();
+  $events = $result->fetch_all(MYSQLI_ASSOC);
+
   /* Close the connection to the database */
   $conn->close();
 
@@ -151,6 +160,24 @@
     <?php echo "Have an egg with $partnerName"; ?>
   </button>
 </form>
+
+<?php foreach($events as $event): ?>
+  <div class="card p-2 mb-2">
+    <p class="mb-1"><?php echo '@' . $event['happened_at']; ?></p>
+    <p class="m-0">
+      <?php
+        if (isset($event['partner_id'])):
+          echo "Had an egg with {$event['partner_id']}";
+        elseif (isset($event['level_reached'])):
+          $new_level = (int)$event['level_reached'];
+          echo 'Leveled up from ' . ($new_level - 1) . ' to ' . $new_level;
+        else:
+          echo "Learned {$event['move_name']}";
+        endif;
+      ?>
+    </p>
+  </div>
+<?php endforeach; ?>
 
 <!-- Import the footer --->
 <?php require(__DIR__ . '/inc/footer.php'); ?>
