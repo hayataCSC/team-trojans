@@ -121,24 +121,60 @@
   <?php endforeach; ?>
 </ul>
 
-<form action="/poke_care/api/moves.php" method="POST">
+<div class="btn-group-vertical">
+  <button
+    type="submit"
+    form="level-up-form"
+    class="btn btn-outline-primary"
+    name="operation"
+    value="level_up"
+  >
+    Increment pokemon's level
+  </button>
+  <button
+    class="btn btn-outline-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#moveModal"
+  >
+      Log new move
+  </button>
+  <button type="button" class="btn btn-outline-primary">Middle</button>
+  <button type="button" class="btn btn-outline-primary">Right</button>
+</div>
+
+<form id="level-up-form" action="/poke_care/api/pokemon.php" method="POST">
   <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-  <div class="form-group">
-    <label for="moves">Move Learned</label>
-    <input list="movesList" id="moves" name="move" class="form-control"/>
-    <datalist id="movesList">
-      <?php foreach($moves as $move): ?>
-        <option value="<?php echo $move; ?>">
-      <?php endforeach; ?>
-    </datalist>
-  </div>
-  <button type="submit" class="btn btn-primary" name="query" value="PUT">Log new move</button>
 </form>
 
-<form action="/poke_care/api/pokemon.php" method="POST">
-  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-  <button type="submit" class="btn btn-primary" name="operation" value="level_up">Increment pokemon's level</button>
-</form>
+<div class="modal fade" id="moveModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Move Learned</h5>
+        <button type="button" class="close btn" data-bs-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="move-form" action="/poke_care/api/moves.php" method="POST">
+        <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
+        <div class="form-group">
+          <label for="moves">Move Learned</label>
+          <input list="movesList" id="moves" name="move" class="form-control"/>
+          <datalist id="movesList">
+            <?php foreach($moves as $move): ?>
+              <option value="<?php echo $move; ?>">
+            <?php endforeach; ?>
+          </datalist>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="move-form" class="btn btn-primary" name="query" value="PUT">Log new move</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <form action="/poke_care/api/pokemon.php" method="POST">
   <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
@@ -156,7 +192,7 @@
 
 <?php if(isset($partnerName)): ?>
   <!-- If there is a partner to have eggs with, display a button for logging an egg event --->
-  <form action="/poke_care/api/eggs.php" method="POST">
+  <form id="egg-form" action="/poke_care/api/eggs.php" method="POST">
     <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
     <button type="submit" class="btn btn-primary" name="operation" value="have_egg">
       <?php echo "Have an egg with $partnerName"; ?>
