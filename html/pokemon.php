@@ -109,38 +109,102 @@
 <!-- Import the header --->
 <?php require(__DIR__ . '/inc/header.php'); ?>
 
-<h1><?php echo $pokemon['name'] ?></h1>
-<h3><?php echo "Species: {$pokemon['species']}"; ?></h3>
-<h3><?php echo "Current level: {$pokemon['level']}"; ?></h3>
-<h3><?php echo $pokemon['is_female'] ? 'Female' : 'Male'; ?></h3>
+<div class="container p-0">
+  <div class="row justify-content-between">
+    <div class="col-sm-auto">
+      <h1><?php echo $pokemon['name'] ?></h1>
+      <h3><?php echo "Species: {$pokemon['species']}"; ?></h3>
+      <h3><?php echo "Current level: {$pokemon['level']}"; ?></h3>
+      <h3><?php echo $pokemon['is_female'] ? 'Female' : 'Male'; ?></h3>
+    </div>
+    <div class="col-sm-auto">
+      <div class="btn-group-vertical">
+        <button
+          type="submit"
+          form="level-up-form"
+          class="btn btn-outline-primary btn-lg"
+          name="operation"
+          value="level_up"
+        >
+          Increment pokemon's level
+        </button>
+        <button
+          class="btn btn-outline-primary btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#moveModal"
+        >
+            Log new move
+        </button>
+        <button
+          class="btn btn-outline-primary btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#friendModal"
+        >
+          Add friend
+        </button>
+        <?php if (isset($partnerName)): ?>
+          <button
+            type="submit"
+            form="egg-form"
+            class="btn btn-outline-primary btn-lg"
+            name="operation"
+            value="have_egg"
+          >
+            <?php echo "Have an egg with $partnerName"; ?>
+          </button>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php if(isset($partnerName)): ?>
+  <!-- If there is a partner to have eggs with, put the hidden form --->
+  <form id="egg-form" action="/poke_care/api/eggs.php" method="POST">
+    <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
+  </form>
+<?php else: ?>
+  <!-- If there is no partner with have eggs with, display the message --->
+  <div class="alert alert-info">
+    <?php echo "{$pokemon['name']} does not have a partner to have eggs with"; ?>
+  </div>
+<?php endif; ?>
+
+<hr/>
 
 <h3><?php echo "{$pokemon['name']}'s friends"; ?></h3>
-<ul class="list-group">
-  <?php foreach($friends as $friend): ?>
-    <li class="list-group-item"><?php echo $friend['name'] ?></li>
-  <?php endforeach; ?>
-</ul>
+<?php if (count($friends) === 0): ?>
+  <div class="alert alert-info">
+    <?php echo "{$pokemon['name']} doesn't have any friend" ?>
+  </div>
+<?php else: ?>
+  <ul class="list-group">
+    <?php foreach($friends as $friend): ?>
+      <li class="list-group-item"><?php echo $friend['name'] ?></li>
+    <?php endforeach; ?>
+  </ul>
+<?php endif; ?>
 
-<div class="btn-group-vertical">
-  <button
-    type="submit"
-    form="level-up-form"
-    class="btn btn-outline-primary"
-    name="operation"
-    value="level_up"
-  >
-    Increment pokemon's level
-  </button>
-  <button
-    class="btn btn-outline-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#moveModal"
-  >
-      Log new move
-  </button>
-  <button type="button" class="btn btn-outline-primary">Middle</button>
-  <button type="button" class="btn btn-outline-primary">Right</button>
-</div>
+<hr/>
+
+<h3><?php echo "{$pokemon['name']}'s event history"; ?></h3>
+<?php foreach($events as $event): ?>
+  <div class="card p-2 mb-2">
+    <p class="mb-1"><?php echo '@' . $event['happened_at']; ?></p>
+    <p class="m-0">
+      <?php
+        if (isset($event['partner_name'])):
+          echo "Had an egg with {$event['partner_name']}";
+        elseif (isset($event['level_reached'])):
+          $new_level = (int)$event['level_reached'];
+          echo 'Leveled up from ' . ($new_level - 1) . ' to ' . $new_level;
+        else:
+          echo "Learned {$event['move_name']}";
+        endif;
+      ?>
+    </p>
+  </div>
+<?php endforeach; ?>
 
 <form id="level-up-form" action="/poke_care/api/pokemon.php" method="POST">
   <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
@@ -176,52 +240,35 @@
   </div>
 </div>
 
-<form action="/poke_care/api/pokemon.php" method="POST">
-  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-  <div class="form-group">
-    <label for="pokemons">Befriend with</label>
-    <input list="pokemonList" id="pokemons" name="new_friend_id" class="form-control"/>
-    <datalist id="pokemonList">
-      <?php foreach($potentialFriends as $potentialFriend): ?>
-        <option value="<?php echo $potentialFriend['id']; ?>"><?php echo $potentialFriend['name']; ?></option>
-      <?php endforeach; ?>
-    </datalist>
+<div class="modal fade" id="friendModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Move Learned</h5>
+        <button type="button" class="close btn" data-bs-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="friend-form" action="/poke_care/api/pokemon.php" method="POST">
+        <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
+        <div class="form-group">
+          <label for="pokemons">Befriend with</label>
+          <input list="pokemonList" id="pokemons" name="new_friend_id" class="form-control"/>
+          <datalist id="pokemonList">
+            <?php foreach($potentialFriends as $potentialFriend): ?>
+              <option value="<?php echo $potentialFriend['id']; ?>"><?php echo $potentialFriend['name']; ?></option>
+            <?php endforeach; ?>
+          </datalist>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="friend-form" class="btn btn-primary" name="operation" value="befriend">Add Friend</button>
+      </div>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary" name="operation" value="befriend">Add Friend</button>
-</form>
-
-<?php if(isset($partnerName)): ?>
-  <!-- If there is a partner to have eggs with, display a button for logging an egg event --->
-  <form id="egg-form" action="/poke_care/api/eggs.php" method="POST">
-    <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-    <button type="submit" class="btn btn-primary" name="operation" value="have_egg">
-      <?php echo "Have an egg with $partnerName"; ?>
-    </button>
-  </form>
-<?php else: ?>
-  <!-- If there is no partner with have eggs with, notify the user --->
-  <div class="alert alert-info">
-    <?php echo "{$pokemon['name']} does not have a partner to have eggs with"; ?>
-  </div>
-<?php endif; ?>
-
-<?php foreach($events as $event): ?>
-  <div class="card p-2 mb-2">
-    <p class="mb-1"><?php echo '@' . $event['happened_at']; ?></p>
-    <p class="m-0">
-      <?php
-        if (isset($event['partner_name'])):
-          echo "Had an egg with {$event['partner_name']}";
-        elseif (isset($event['level_reached'])):
-          $new_level = (int)$event['level_reached'];
-          echo 'Leveled up from ' . ($new_level - 1) . ' to ' . $new_level;
-        else:
-          echo "Learned {$event['move_name']}";
-        endif;
-      ?>
-    </p>
-  </div>
-<?php endforeach; ?>
+</div>
 
 <!-- Import the footer --->
 <?php require(__DIR__ . '/inc/footer.php'); ?>
