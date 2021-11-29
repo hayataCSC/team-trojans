@@ -26,7 +26,7 @@
   <thead>
     <tr>
       <th scope="col">Nickname</th>
-      <th scope="col">Spiecies</th>
+      <th scope="col">Species</th>
       <th scope="col">Current Level</th>
       <th scope="col">Sex</th>
       <th scope="col">Trainer</th>
