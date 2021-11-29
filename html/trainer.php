@@ -21,7 +21,7 @@
   $trainer = $result->fetch_assoc();
 
   /* Get the entry for the request trainer from the trainers table */
-  $query = 'SELECT name, species, level, is_female FROM pokemon WHERE trainer_id = ?;';
+  $query = 'SELECT id, name, species, level, is_female FROM pokemon WHERE trainer_id = ?;';
   $stmt = $conn->prepare($query);
   $stmt->bind_param('s', $_GET['id']);
   if (!$stmt->execute()) die();
@@ -65,7 +65,11 @@
     <tbody>
       <?php foreach($pokemons as $pokemon): ?>
         <tr>
-          <th scope="row"><?php echo $pokemon['name']; ?></th>
+        <th scope="row">
+          <a href="<?php echo "/poke_care/pokemon.php/?id={$pokemon['id']}"; ?>">
+            <?php echo $pokemon['name']; ?>
+          </a>
+        </th>
           <td><?php echo $pokemon['species']; ?></td>
           <td><?php echo $pokemon['level']; ?></td>
           <td><?php echo $pokemon['is_female'] ? 'M' : 'F'; ?></td>
