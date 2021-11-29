@@ -14,6 +14,7 @@
     <ul class="nav nav-pills">
       <li class="nav-item"><a href="/poke_care/pokemons.php" class="nav-link">Pokemons</a></li>
       <li class="nav-item"><a href="/poke_care/trainers.php" class="nav-link">Trainers</a></li>
+      <li class="nav-item"><a href="/poke_care/dashboard.php" class="nav-link">Dashboard</a></li>
     </ul>
   </header>
   <div class="container">
