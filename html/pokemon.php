@@ -75,7 +75,7 @@
   if (!isset($partnerId)) $partnerName = null;
   else {
     /* Don't use "pokemon" as a variable name here (instead use $p).
-     * It still collide with $pokemon that refers to the requested pokemon */
+     * If you use "pokemon", it collides with $pokemon that refers to the requested pokemon */
     foreach($pokemons as $p) {
       if ((int)$p['id'] === $partnerId) {
         $partnerName = $p['name'];
@@ -154,20 +154,28 @@
   <button type="submit" class="btn btn-primary" name="operation" value="befriend">Add Friend</button>
 </form>
 
-<form action="/poke_care/api/eggs.php" method="POST">
-  <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-  <button type="submit" class="btn btn-primary" name="operation" value="have_egg">
-    <?php echo "Have an egg with $partnerName"; ?>
-  </button>
-</form>
+<?php if(isset($partnerName)): ?>
+  <!-- If there is a partner to have eggs with, display a button for logging an egg event --->
+  <form action="/poke_care/api/eggs.php" method="POST">
+    <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
+    <button type="submit" class="btn btn-primary" name="operation" value="have_egg">
+      <?php echo "Have an egg with $partnerName"; ?>
+    </button>
+  </form>
+<?php else: ?>
+  <!-- If there is no partner with have eggs with, notify the user --->
+  <div class="alert alert-info">
+    <?php echo "{$pokemon['name']} does not have a partner to have eggs with"; ?>
+  </div>
+<?php endif; ?>
 
 <?php foreach($events as $event): ?>
   <div class="card p-2 mb-2">
     <p class="mb-1"><?php echo '@' . $event['happened_at']; ?></p>
     <p class="m-0">
       <?php
-        if (isset($event['partner_id'])):
-          echo "Had an egg with {$event['partner_id']}";
+        if (isset($event['partner_name'])):
+          echo "Had an egg with {$event['partner_name']}";
         elseif (isset($event['level_reached'])):
           $new_level = (int)$event['level_reached'];
           echo 'Leveled up from ' . ($new_level - 1) . ' to ' . $new_level;
