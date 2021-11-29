@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <?php
   /* Configure the error output level */
   require(__DIR__ . '/config/error.php');
@@ -29,17 +35,41 @@
   /* Close the connection to the database */
   $conn->close();
 ?>
+</body>
+</html>
 
 <?php require(__DIR__ . '/inc/header.php'); ?>
 
 <h1>Poke Care Stats</h1>
 
-<h2>Total level ups at the Day Care: <?php echo $levelups?></h2>
-
-<h2>Total Moves Learned at the Day Care: <?php echo $totalmoves?></h2>
-
-<h2>Total Eggs conceived at the Day Care: <?php echo $totaleggs?></h2>
-
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body" id="Row1">
+          <h5 class="card-title">Total Moves learned</h5>
+          <p class="card-text" style="font-size:6em;text-align:center;margin-top:-20px"><?php echo $totalmoves?></p>
+        </div>
+      </div>
+    </div>
+        <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body" id="Row1">
+          <h5 class="card-title">Total level ups</h5>
+          <p class="card-text" style="font-size:6em;text-align:center;margin-top:-20px"><?php echo $levelups?><i class="fa fa-arrow-down" aria-hidden="true"></i></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body" id="Row1">
+          <h5 class="card-title">Total Eggs Conceived</h5>
+          <p class="card-text" style="font-size:6em;text-align:center;margin-top:-20px"><?php echo $totaleggs?></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
