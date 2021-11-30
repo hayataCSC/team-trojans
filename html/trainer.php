@@ -132,7 +132,7 @@
           </div>
           <div class="form-group">
             <label for="species">species</label>
-            <input list="speciesList" id="species" name="species" class="form-control"/>
+            <input list="speciesList" id="species" name="species" class="form-control" required>
             <datalist id="speciesList">
               <?php foreach($species as $option): ?>
                 <option value="<?php echo $option['name'] ; ?>">
