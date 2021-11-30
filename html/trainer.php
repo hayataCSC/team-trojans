@@ -124,9 +124,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="trainer-form" action="/poke_care/api/pokemon.php" method="POST">
-          <input type="hidden" name="query" value="POST">
-          <input type="hidden" name="trainer_id" value="<? $trainer['id'] ?>">
+        <form id="pokemon-form" action="/poke_care/api/pokemon.php" method="POST">
+          <input type="hidden" name="trainer_id" value="<?php echo $trainer['id']; ?>">
           <div class="form-group">
             <label for="name">Nick name</label>
             <input id="name" name="name" class="form-control" type="text" placeholder="Nick name" required>
@@ -160,7 +159,7 @@
       <div class="modal-footer">
         <button
           type="submit"
-          form="trainer-form"
+          form="pokemon-form"
           class="btn btn-primary"
           name="operation"
           value="add_pokemon"
