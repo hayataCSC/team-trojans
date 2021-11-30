@@ -124,7 +124,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="trainer-form" action="/poke_care/trainer.php" method="POST">
+        <form id="trainer-form" action="/poke_care/api/pokemon.php" method="POST">
           <input type="hidden" name="query" value="POST">
           <input type="hidden" name="trainer_id" value="<? $trainer['id'] ?>">
           <div class="form-group">
@@ -141,13 +141,32 @@
             </datalist>
           </div>
           <div class="form-group">
-            <label for="gender">Current level</label>
+            <label for="level">Current level</label>
             <input id="level" name="level" class="form-control" type="number" value="0" required>
+          </div>
+          <div>
+            <p class="mb-0">Gender</p>
+            <div class="form-check">
+              <input id="gender" name="gender" class="form-check-input" type="radio" value="male" required>
+              <label for="gender">Male</label>
+            </div>
+            <div class="form-check">
+              <input id="gender" name="gender" class="form-check-input" type="radio" value="female" required>
+              <label for="gender">Female</label>
+            </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <input type="submit" form="trainer-form" class="btn btn-primary" />
+        <button
+          type="submit"
+          form="trainer-form"
+          class="btn btn-primary"
+          name="operation"
+          value="add_pokemon"
+        >
+          Done
+        </button>
       </div>
     </div>
   </div>
