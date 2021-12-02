@@ -1,0 +1,11 @@
+DELIMITER $$
+
+CREATE FUNCTION total_eggs()
+RETURNS INT
+BEGIN
+  SELECT COUNT(*) INTO @count
+    FROM egg;
+  RETURN @count DIV 2;
+END $$
+
+DELIMITER ;

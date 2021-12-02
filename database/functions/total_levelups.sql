@@ -1,0 +1,12 @@
+DELIMITER $$
+
+CREATE FUNCTION total_levelups()
+RETURNS INT
+NOT DETERMINISTIC
+BEGIN
+  SELECT COUNT(*) INTO @count
+    FROM level_up;
+  RETURN @count;
+END $$
+
+DELIMITER ;

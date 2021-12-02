@@ -1,0 +1,12 @@
+DELIMITER $$
+
+CREATE FUNCTION total_moves()
+RETURNS INT
+NOT DETERMINISTIC
+BEGIN
+  SELECT COUNT(*) INTO @count
+    FROM move_learned;
+  RETURN @count;
+END $$
+
+DELIMITER ;
