@@ -190,7 +190,11 @@
 <?php else: ?>
   <ul class="list-group">
     <?php foreach($friends as $friend): ?>
-      <li class="list-group-item"><?php echo $friend['name'] ?></li>
+      <li class="list-group-item">
+        <a href="<?php echo "/poke_care/pokemon.php?id={$friend['id']}"; ?>">
+          <?php echo $friend['name'] ?>
+        </a>
+      </li>
     <?php endforeach; ?>
   </ul>
 <?php endif; ?>
