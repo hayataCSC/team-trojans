@@ -92,6 +92,15 @@
   /* Get only move names */
   $moves = array_map(function($move) { return $move[0]; }, $moves);
 
+  /* Check if the pokemon can level up */
+  $query = 'SELECT can_learn_move(?)';
+  $stmt = $conn->prepare($query);
+  if (!$stmt) die($conn->error);
+  $stmt->bind_param('i',  $_GET['id']);
+  if (!$stmt->execute()) die($conn->error);
+  $result = $stmt->get_result();
+  $can_learn_move = $result->fetch_all(MYSQLI_NUM)[0][0];
+
   /* Get all events for the pokemon */
   $query = 'CALL get_all_events(?)';
   $stmt = $conn->prepare($query);
@@ -132,6 +141,7 @@
           class="btn btn-outline-primary btn-lg"
           data-bs-toggle="modal"
           data-bs-target="#moveModal"
+          <?php echo $can_learn_move ? '' : 'disabled'; ?>
         >
             Log new move
         </button>
