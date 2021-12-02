@@ -15,16 +15,21 @@ NOT DETERMINISTIC
 BEGIN
   DECLARE trainer_id INT;
   DECLARE partner_id INT;
-  /* Get the trainer id of the input pokeon */
-  SELECT p.trainer_id INTO trainer_id
+  DECLARE pokemon_gender BOOLEAN;
+  DECLARE partner_gender BOOLEAN;
+  /* Get the gender and trainer id of the input pokeon */
+  SELECT p.trainer_id, p.is_female
+    INTO trainer_id, pokemon_gender
     FROM pokemon p
     WHERE id = pokemon_id;
   /* Get the pokemon that is owned by the same trainer */
-  SELECT p.id INTO partner_id
+  SELECT p.id, p.is_female
+    INTO partner_id, partner_gender
     FROM pokemon p
     WHERE p.trainer_id = trainer_id AND p.id != pokemon_id;
-  /* Return the id of the pokemon that is owned by the same trainer */
-  RETURN partner_id;
+  /* If pokemons owned by the trainer is the same sex, return null.
+   * Otherwise, return the id of the partner */
+  RETURN IF(pokemon_gender = partner_gender, NULL, partner_id);
 END $$
 
 DELIMITER ;
