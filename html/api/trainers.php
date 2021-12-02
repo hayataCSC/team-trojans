@@ -7,6 +7,9 @@
   /* Connect to the pokemon database */
   $conn = connect('pokemon');
 
+  $t_name = htmlentities($_POST['name']);
+  $t_phone = htmlspecialchars($_POST['phone']);
+  $t_email = htmlspecialchars($_POST['email']);
   /* Construct the query based on the request method */
   $stmt;
   switch ($_POST['query']) {
@@ -15,13 +18,13 @@
         VALUES(?, ?, ?);";
       $stmt = $conn->prepare($query);
       if (!$stmt) die($conn->error . "\n");
-      $stmt->bind_param('sss', $_POST['name'], $_POST['phone'], $_POST['email']);
+      $stmt->bind_param('sss', $t_name, $t_phone, $t_email);
       break;
     case 'PUT':
       $query = "UPDATE trainer SET name = ?, phone = ?, email = ? WHERE id = ?;";
       $stmt = $conn->prepare($query);
       if (!$stmt) die($conn->error . "\n");
-      $stmt->bind_param('sssi', $_POST['name'], $_POST['phone'], $_POST['email'], $_POST['id']);
+      $stmt->bind_param('sssi', $t_name, $t_phone, $t_email, $_POST['id']);
       break;
     case 'DELETE':
       $query = "DELETE FROM trainer WHERE id = ?;";

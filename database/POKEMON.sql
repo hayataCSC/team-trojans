@@ -5,7 +5,7 @@ CREATE TABLE pokemon (
   name VARCHAR(50),
   species VARCHAR(50),
   trainer_id INT,
-  level INT,
+  level INT UNSIGNED,
   is_female Boolean,
   FOREIGN KEY (species)
     REFERENCES species(name)

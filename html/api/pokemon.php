@@ -22,11 +22,12 @@
         VALUES(?, ?, ?, ?, ?);';
       $stmt = $conn->prepare($query);
       if (!$stmt) die($conn->error);
+      $pok_name = htmlspecialchars($_POST['name']);
 
       $stmt->bind_param(
         'sssss',
-        $_POST['name'],
-        $_POST['species'],
+        $pok_name,
+        htmlspecialchars($_POST['species']),
         $_POST['trainer_id'],
         $_POST['level'],
         $is_female
