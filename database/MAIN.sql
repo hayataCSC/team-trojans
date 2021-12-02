@@ -22,6 +22,7 @@ SOURCE functions/total_eggs.sql;
 SOURCE functions/total_levelups.sql;
 SOURCE functions/total_moves.sql;
 SOURCE functions/get_party_size.sql;
+SOURCE functions/get_pokemon_gender.sql;
 
 SOURCE procedures/move_event.sql;
 SOURCE procedures/level_up.sql;
