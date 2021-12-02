@@ -18,9 +18,10 @@ SOURCE MOVE_LEARNED.sql;
 SOURCE functions/get_level.sql;
 SOURCE functions/can_learn_move.sql;
 SOURCE functions/get_partner.sql;
-SOURCE functions/togal_eggs.sql;
+SOURCE functions/total_eggs.sql;
 SOURCE functions/total_levelups.sql;
-SOURCE functions/total_movesl.sql;
+SOURCE functions/total_moves.sql;
+SOURCE functions/get_party_size.sql;
 
 SOURCE procedures/move_event.sql;
 SOURCE procedures/level_up.sql;
@@ -29,4 +30,4 @@ SOURCE procedures/get_friends.sql;
 SOURCE procedures/have_egg.sql;
 SOURCE procedures/get_all_events.sql;
 
-
+SOURCE triggers/before_pokemon_insert.sql;
