@@ -1,5 +1,5 @@
     <footer>
-      <p>MyWebsite &copy; 2021</p>
+      <p>PokeCare &copy; 2021</p>
     </footer>
   </div>
 </body>
