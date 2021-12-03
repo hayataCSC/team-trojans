@@ -135,7 +135,7 @@
           name="operation"
           value="level_up"
         >
-          Increment pokemon's level
+          Add level up event
         </button>
         <button
           class="btn btn-outline-primary btn-lg"
@@ -143,7 +143,7 @@
           data-bs-target="#moveModal"
           <?php echo $can_learn_move ? '' : 'disabled'; ?>
         >
-            Log new move
+            Add move event
         </button>
         <button
           class="btn btn-outline-primary btn-lg"
@@ -267,7 +267,7 @@
       <form id="friend-form" action="/poke_care/api/pokemon.php" method="POST">
         <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
         <div class="form-group">
-          <label for="pokemons">Befriend with</label>
+          <label for="pokemons">Be friends with</label>
           <input list="pokemonList" id="pokemons" name="new_friend_id" class="form-control"/>
           <datalist id="pokemonList">
             <?php foreach($potentialFriends as $potentialFriend): ?>
