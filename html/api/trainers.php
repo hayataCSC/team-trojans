@@ -7,7 +7,7 @@
   /* Connect to the pokemon database */
   $conn = connect('pokemon');
 
-  $t_name = htmlentities($_POST['name']);
+  $t_name = htmlspecialchars($_POST['name']);
   $t_phone = htmlspecialchars($_POST['phone']);
   $t_email = htmlspecialchars($_POST['email']);
   /* Construct the query based on the request method */
