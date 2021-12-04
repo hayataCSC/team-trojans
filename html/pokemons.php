@@ -42,7 +42,7 @@
         </th>
         <td><?php echo $pokemon['species']; ?></td>
         <td><?php echo $pokemon['level']; ?></td>
-        <td><?php echo $pokemon['is_female'] ? 'M' : 'F'; ?></td>
+        <td><?php echo $pokemon['is_female'] ? 'F' : 'M'; ?></td>
         <td>
           <a href=<?php echo 'trainer.php/?id=' . $pokemon['trainer_id']; ?>>
             <?php echo $pokemon['trainer'] ?>
