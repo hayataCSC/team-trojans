@@ -13,6 +13,12 @@
   /* Connect to the database */
   $conn = connect();
 
+  // Force level up before learning move
+  $query = 'CALL level_up(?)';
+  $stmt = $conn->prepare($query);
+  if (!$stmt) die($conn->error);
+  $stmt->bind_param('i', $pokemonId);
+  if (!$stmt->execute()) die($conn->error);
   /* Call the log_move_event stored procedure with two arguments */
   $query = "CALL log_move_event(?, ?)";
   $stmt = $conn->prepare($query);
