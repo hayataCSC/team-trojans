@@ -128,7 +128,7 @@
     </div>
     <div class="col-sm-auto">
       <div class="btn-group-vertical">
-        <button
+<!--         <button
           type="submit"
           form="level-up-form"
           class="btn btn-outline-primary btn-lg"
@@ -136,12 +136,12 @@
           value="level_up"
         >
           Add level up event
-        </button>
+        </button> -->
         <button
           class="btn btn-outline-primary btn-lg"
           data-bs-toggle="modal"
           data-bs-target="#moveModal"
-          <?php echo $can_learn_move ? '' : 'disabled'; ?>
+          <?php // echo $can_learn_move ? '' : 'disabled'; ?>
         >
             Add move event
         </button>
@@ -220,9 +220,9 @@
   </div>
 <?php endforeach; ?>
 
-<form id="level-up-form" action="/poke_care/api/pokemon.php" method="POST">
+<!-- <form id="level-up-form" action="/poke_care/api/pokemon.php" method="POST">
   <input type="hidden" name="pokemon_id" value="<?php echo $_GET['id']; ?>">
-</form>
+</form> -->
 
 <div class="modal fade" id="moveModal">
   <div class="modal-dialog">
